@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Preguntas Rápidas</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+<h1>Preguntas Rápidas</h1>
+
+<!-- Configuración inicial -->
+<div id="config">
+    <p>¿Cuánto tiempo deseas para cada pregunta?</p>
+    <select id="timeSelect">
+    <option value="0">Sin tiempo</option>
+    <option value="150">2 minutos 30 segundos</option>
+    <option value="210">3 minutos 30 segundos</option>
+    <option value="300">5 minutos</option>
+    </select>
+    <br><br>
+    <button id="startBtn">Comenzar</button>
+</div>
+
+<!-- Sección de preguntas -->
+<div id="quiz" style="display: none;">
+    <p id="question-top"></p>
+    <img id="question-img" src="" alt="Imagen de la pregunta" style="max-width: 100%; height: auto; display: none;" />
+    <p id="question-bottom"></p>
+    <div id="options"></div>
+    <p id="timer"></p>
+    <button id="nextBtn">Siguiente</button>
+    <p id="score"></p>
+</div>
+</div>
+
+<script>
+// Definimos el objeto de datos
+const questionData = {
+    topText: 'Considere la siguiente gráfica de la circunferencia “c” de centro P y radio 5:',
+    image: 'imagenes/pregunta 4.png', // Ruta relativa de la imagen
+    bottomText: 'De acuerdo con la información dada la ecuación de una recta tangente a “c” corresponde a',
+    options: [
+        "y = 5",
+        "x = -8",
+        "x = -2",
+    ],
+    answer: "x = -8"
+};
+
+// Función para cargar la pregunta en el HTML
+function loadQuestion() {
+    // Cargar el texto y la imagen
+    document.getElementById("question-top").textContent = questionData.topText;
+    document.getElementById("question-img").src = questionData.image; // Asignar la imagen
+    document.getElementById("question-img").style.display = "block"; // Mostrar la imagen
+    document.getElementById("question-bottom").textContent = questionData.bottomText;
+
+    // Cargar las opciones de respuesta
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = ''; // Limpiar opciones anteriores
+    questionData.options.forEach(option => {
+        const optionElement = document.createElement("p");
+        optionElement.textContent = option;
+        optionsDiv.appendChild(optionElement);
+    });
+}
+
+// Mostrar la pregunta cuando el usuario hace clic en "Comenzar"
+document.getElementById("startBtn").addEventListener("click", function() {
+    document.getElementById("config").style.display = "none"; // Ocultar la configuración
+    document.getElementById("quiz").style.display = "block"; // Mostrar la sección de preguntas
+    loadQuestion(); // Cargar la primera pregunta
+});
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

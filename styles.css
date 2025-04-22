@@ -1,0 +1,27 @@
+body {
+font-family: sans-serif;
+background: #f0f0f0;
+padding: 20px;
+text-align: center;
+}
+
+.container {
+background: white;
+padding: 20px;
+border-radius: 10px;
+display: inline-block;
+max-width: 500px;
+width: 90%;
+}
+
+#options button {
+display: block;
+margin: 10px auto;
+padding: 10px 20px;
+width: 80%;
+font-size: 16px;
+}
+
+#question-img {
+margin: 15px 0;
+}
